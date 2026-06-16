@@ -78,27 +78,43 @@ export default function PowerBIModal({ src, title = 'Power BI', open, onClose })
     >
       <div
         ref={modalRef}
-        className={`relative w-[90%] h-[85%] bg-white/95 rounded-3xl shadow-2xl overflow-hidden border border-white/70 transform transition-all duration-300 ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
+        className={`relative w-[90%] h-[85%] bg-white/95 rounded-md shadow-xl overflow-hidden border border-white/70 transform transition-all duration-300 ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
       >
-        <div className="absolute top-4 right-4 z-20 flex gap-2">
+        <div className="absolute top-4 right-4 z-20 flex flex-col items-end gap-2">
           <button
             ref={closeBtnRef}
             onClick={enterFullscreen}
-            className="bg-white/90 px-3 py-2 rounded-full text-sm font-medium border border-gray-200 shadow-sm hover:bg-white"
+            aria-label="Pantalla completa"
+            className="w-11 h-11 flex items-center justify-center rounded-full bg-white/90 border border-gray-200 shadow-sm hover:bg-white transition-colors"
           >
-            Pantalla completa
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-slate-700">
+              <path d="M4 8V4h4" />
+              <path d="M20 8V4h-4" />
+              <path d="M4 16v4h4" />
+              <path d="M20 16v4h-4" />
+            </svg>
           </button>
           <button
             onClick={onClose}
-            className="bg-red-600 text-white px-3 py-2 rounded-full text-sm font-medium shadow-sm hover:bg-red-700"
+            aria-label="Cerrar modal"
+            className="w-11 h-11 flex items-center justify-center rounded-full bg-red-600 text-white shadow-sm hover:bg-red-700 transition-colors"
           >
-            Cerrar
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
           </button>
         </div>
 
         {loading && !error && (
           <div className="absolute inset-0 flex items-center justify-center bg-white/80 z-10 backdrop-blur-sm">
-            <div className="rounded-full bg-white/90 px-4 py-2 shadow">Cargando informe...</div>
+            <div className="rounded-full bg-white/90 px-4 py-2 shadow">
+                <svg className="animate-spin h-10 w-10 text-gray-700" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                </svg>
+
+            </div>
           </div>
         )}
 

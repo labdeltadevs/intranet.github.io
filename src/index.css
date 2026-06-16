@@ -9,7 +9,7 @@
 
 body {
   background:
-    linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.90)),
+    linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)),
     url('./assets/matraz.png') center / cover fixed;
   min-height: 100vh;
 }
